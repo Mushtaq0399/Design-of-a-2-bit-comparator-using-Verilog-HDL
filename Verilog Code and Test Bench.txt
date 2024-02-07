@@ -1,0 +1,32 @@
+Verilog Code
+
+module comparator_7(input [6:0]a,b,output e,g,l);
+assign e=a==b;
+assign g=a>b;
+assign l=a<b;
+endmodule
+
+Test Bench
+
+module comparator_7_rtl_test( );
+reg [6:0]a,b;
+wire e,g,l;
+comparator_7 dut(.a(a),.b(b),.e(e),.g(g),.l(l));
+initial
+begin
+a=7'b000000;b=7'b0000000;#100
+a=7'b0010000;b=7'b0000010;#100
+a=7'b0010010;b=7'b1000010;#100
+a=7'b0001010;b=7'b0010010;#100
+a=7'b0011000;b=7'b0000100;#100
+a=7'b0011000;b=7'b0100100;#100
+a=7'b0010010;b=7'b0100100;#100
+a=7'b0000000;b=7'b0100000;#100
+a=7'b0001100;b=7'b0010100;#100
+a=7'b0010100;b=7'b1100100;#100
+a=7'b0010010;b=7'b0011100;#100
+a=7'b0010000;b=7'b0010010;#100
+a=7'b0000100;b=7'b0100110;#100
+a=7'b0011000;b=7'b1100010;#100
+end
+endmodule
